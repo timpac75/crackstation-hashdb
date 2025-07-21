@@ -1,25 +1,4 @@
-<?php
-// A continuation of test.sh...
-
-require_once('LookupTable.php');
-require_once('MoreHashes.php');
-
-if (count($argv) !== 2) {
-    echo "Usage: php test.php <hash type>\n";
-    exit(1);
-}
-
-$hash_algorithm = $argv[1];
-$lookup = new LookupTable("test-index-files/test-words-$hash_algorithm.idx", "test/words.txt", $hash_algorithm);
-
-$hasher = MoreHashAlgorithms::GetHashFunction($hash_algorithm);
-
-$fh = fopen("test/words.txt", "r");
-if ($fh === false) {
-    echo "Error opening words.txt";
-    exit(1);
-}
-
+*
 while (($line = fgets($fh)) !== false) {
     $word = rtrim($line, "\r\n");
 
